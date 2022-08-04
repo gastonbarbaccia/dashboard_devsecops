@@ -158,7 +158,7 @@ $mysqli = conexiondb();
           <div class="card-tools">
             <div class="input-group input-group-sm">
               <div>
-                <a class="btn btn-primary" style="width: 100%;background-color:blue;border-color:blue;" href="#">+ Nuevo cliente</a>
+                <a class="btn btn-primary" style="width: 100%;background-color:blue;border-color:blue;" href="alta_cliente.php">+ Nuevo cliente</a>
               </div>
             </div>
           </div>

@@ -18,7 +18,7 @@ $mysqli = conexiondb();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>DevSecOps | Gestión de usuarios </title>
+  <title>DevSecOps | Alta de usuario </title>
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -122,7 +122,7 @@ $mysqli = conexiondb();
                 </p>
               </a>
             </li>
-           <!-- <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-cubes"></i>
                 <p>
@@ -133,7 +133,7 @@ $mysqli = conexiondb();
             <hr width=500 style="background-color:grey">
             <li class="nav-item">
               <a href="index.php" class="nav-link">
-              <i class="nav-icon fas fa-sign-out-alt"></i>
+                <i class="nav-icon fas fa-sign-out-alt"></i>
                 <p>
                   Cerrar sesión
                 </p>
@@ -154,106 +154,60 @@ $mysqli = conexiondb();
 
 
         <div class="card-header">
-          <h3 class="card-title"><b>Gestión de usuarios</b></h3>
+          <h3 class="card-title"><b>Alta de usuario</b></h3>
           <div class="card-tools">
-            <div class="input-group input-group-sm">
-              <div>
-                <a class="btn btn-primary" style="width: 100%;background-color:blue;border-color:blue;" href="alta_usuario.php">+ Nuevo usuario</a>
-              </div>
-            </div>
+
           </div>
         </div>
 
-
-        <div class="card-body table-responsive p-0">
-          <br>
-          <table class="table table-hover text-nowrap" id="myTable" name="myTable">
-            <thead>
-              <tr style="background-color:#ababab">
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Email</th>
-                <th>Usuario</th>
-                <th>Contraseña</th>
-                <th>Fecha de alta</th>
-                <th>Rol</th>
-                <th style="text-align: center;">Opciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Gaston</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Barbaccia</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">gastonbarbaccia@hotmail.com</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">gastonbarbaccia</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><a href="#">Reestablecer contraseña</a></td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">04/08/2022</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">DevSecOps</td>
-                <td style="font-size: 14px;padding-top:2%;text-align:center;padding-bottom:2%">
-                
-                    <a href="modificar_usuario.php" style="padding-right:6%"><i class="fa-solid fas fa-edit"></i> Editar</a>
-                    
-                    <a href="#"><i class="fa-solid fas fa-trash"></i> Eliminar</a>
-                
-                </td>
-              </tr>
-
-              <tr>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Lucas</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Veron</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">lucasveron@hotmail.com</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">lucasveron</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><a href="#">Reestablecer contraseña</a></td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">04/08/2022</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Desarrollo</td>
-                <td style="font-size: 14px;padding-top:2%;text-align:center;padding-bottom:2%">
-                
-                    <a href="modificar_usuario.php" style="padding-right:6%"><i class="fa-solid fas fa-edit"></i> Editar</a>
-                    
-                    <a href="#"><i class="fa-solid fas fa-trash"></i> Eliminar</a>
-                
-                </td>
-              </tr>
-
-              <tr>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Leandro</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Guiamas</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">leaguaimas@hotmail.com</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">leandroguaimas</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><a href="#">Reestablecer contraseña</a></td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">04/08/2022</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">DevOps</td>
-                <td style="font-size: 14px;padding-top:2%;text-align:center;padding-bottom:2%">
-                
-                    <a href="modificar_usuario.php" style="padding-right:6%"><i class="fa-solid fas fa-edit"></i> Editar</a>
-                    
-                    <a href="#"><i class="fa-solid fas fa-trash"></i> Eliminar</a>
-                
-                </td>
-              </tr>
-
-              <tr>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Lucas</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Greco</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">lucasgreco@hotmail.com</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">lucasgreco</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><a href="#">Reestablecer contraseña</a></td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">04/08/2022</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Informes</td>
-                <td style="font-size: 14px;padding-top:2%;text-align:center;padding-bottom:2%">
-                
-                    <a href="modificar_usuario.php" style="padding-right:6%"><i class="fa-solid fas fa-edit"></i> Editar</a>
-                    
-                    <a href="#"><i class="fa-solid fas fa-trash"></i> Eliminar</a>
-                
-                </td>
-              </tr>
-              
-              
-            </tbody>
-          </table>
-        </div>
-
+        <form>
+          <div class="card-body table-responsive p-0" style="width:50%;margin-left:1%">
+            <br>
+            <div class="mb-3" style="width:50%">
+              <label for="fecha_alta" class="form-label">Fecha de alta</label>
+              <input type="text" class="form-control" id="fecha_alta" value="<?php echo $fecha = date('d/m/Y'); ?>" disabled>
+            </div>
+            <div class="mb-3" style="width:50%">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="nombre">
+            </div>
+            <div class="mb-3" style="width:50%">
+              <label for="apellido" class="form-label">Apellido</label>
+              <input type="text" class="form-control" id="apellido">
+            </div>
+            <div class="mb-3" style="width:50%">
+              <label for="email" class="form-label">Correo electrónico</label>
+              <input type="email" class="form-control" id="email">
+            </div>
+            <div class="mb-3" style="width:50%">
+              <label for="usuario" class="form-label">Usuario</label>
+              <input type="text" class="form-control" id="usuario">
+            </div>
+            <div class="mb-3" style="width:50%">
+              <label for="contrasena" class="form-label">Contraseña</label>
+              <input type="text" class="form-control" id="contrasena">
+            </div>
+            <div class="mb-3" style="width:50%">
+              <label for="rol" class="form-label">Rol</label>
+              <select class="form-control" id="rol">
+                <option value="" default></option>
+                <option value="DevSecOps">DevSecOps</option>
+                <option value="DevOps">DevOps</option>
+                <option value="Desarrollador">Desarrollador</option>
+                <option value="Informes">Informes</option>
+                <option value="Cloud AWS">Cloud AWS</option>
+              </select>
+            </div>
+            <div style="margin-bottom:3%;float:right">
+              <div style="display: inline-block;">
+                <a type="submit" class="btn btn-primary" style="background-color:blue;border-color:blue;display: inline-block;margin-top: 30px;width:150px" href="#">Guardar</a>
+              </div>
+              <div style="display:inline-block;">
+                <a class="btn btn-primary" style="background-color:grey;border-color:grey;display: inline-block;margin-top: 30px;width:150px" href="gestion_usuarios.php">Cancelar</a>
+              </div>
+            </div>
+          </div>
+        </form>
     </div>
 
   </div>
