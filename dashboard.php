@@ -5,10 +5,12 @@ include "conexiondb.php";
 
 
 //Se guarda en una variable la conexion para poder usarla
-$mysqli = conexiondb();
+$mysqli = conexion_db();
 
 // Se ejecuta la consulta y se asigna el resultado a una variable, en este caso llamada resultado
-//$resultado = $mysqli->query("");
+$resultado = $mysqli->query("SELECT * FROM clientes");
+
+
 
 ?>
 
@@ -179,33 +181,58 @@ $mysqli = conexiondb();
               </tr>
             </thead>
             <tbody>
+              <?php
+              while($registros = $resultado->fetch_assoc()){
+              ?>
+            
               <tr>
-                <td style="font-size: 14px;padding-top:2%;">Edenor</td>
-                <td style="font-size: 14px;padding-top:2%;"><a href="https://558695327620.signin.aws.amazon.com/console" target="blank"><i class="fa-solid fab fa-aws"></i> #558695327620</a></td>
-                <td style="font-size: 14px;padding-top:2%;">i-a917361829</td>
-                <td style="font-size: 14px;padding-top:2%;">rds-9123had-edenor.com (mysql)</td>
+                <td style="font-size: 14px;padding-top:2%;"><?php echo $registros['cliente'];?></td>
+                <td style="font-size: 14px;padding-top:2%;"><a href="<?php echo "https://".$registros['cuenta_AWS'].".signin.aws.amazon.com/console";?>" target="_blank"><i class="fa-solid fab fa-aws"></i> #<?php echo $registros['cuenta_AWS'];?></a></td>
+                <td style="font-size: 14px;padding-top:2%;"><?php echo $registros['instancia_AWS'];?></td>
+                <td style="font-size: 14px;padding-top:2%;"><?php echo $registros['base_datos_AWS'];?></td>
                 <td style="font-size: 14px;padding-top:2%;">
+                  <?php
+                    if (!empty($registros['sonarqube'])) {
+                    ?>
                   <div style="padding-bottom:5%">
-                    <a href="#" target="blank">Sonarqube Community</a>
+                    <a href="<?php echo $registros['sonarqube'];?>" target="_blank">Sonarqube Community</a>
                   </div>
+                  <?php
+                    }
+                    if (!empty($registros['defect_dojo'])) {
+                  ?>
                   <div style="padding-bottom:5%">
-                    <a href="#" target="blank">Defect dojo</a>
+                    <a href="<?php echo $registros['defect_dojo'];?>" target="_blank">Defect dojo</a>
                   </div>
+                  <?php
+                    }
+                    if (!empty($registros['acunetix'])) {
+                  ?>
                   <div style="padding-bottom:5%">
-                    <a href="#" target="blank">Acunetix</a>
+                    <a href="<?php echo $registros['acunetix'];?>" target="_blank">Acunetix</a>
                   </div>
+                  <?php
+                    }
+                    if (!empty($registros['acunetix'])) {
+                  ?>
                   <div style="padding-bottom:5%">
-                    <a href="#" target="blank">Github</a>
+                    <a href="<?php echo $registros['github'];?>" target="_blank">Github</a>
                   </div>
+                  <?php
+                    }
+                  ?>
                 </td>
                 <td style="font-size: 14px;padding-top:2%;text-align:center">
 
-                  <a href="modificar_cliente.php" style="padding-right:6%"><i class="fa-solid fas fa-edit"></i> Editar</a>
+                  <a href="modificar_cliente.php?id=<?php echo $registros['id'] ?>" style="padding-right:6%"><i class="fa-solid fas fa-edit"></i> Editar</a>
 
-                  <a href="#"><i class="fa-solid fas fa-trash"></i> Eliminar</a>
+                  <a href="eliminar_cliente.php?id=<?php echo $registros['id'] ?>"><i class="fa-solid fas fa-trash"></i> Eliminar</a>
 
                 </td>
               </tr>
+              <?php
+                }
+                ?>
 
             </tbody>
           </table>

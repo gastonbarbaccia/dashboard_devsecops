@@ -3,12 +3,14 @@
 //Primero se debe incluir el archivo donde esta la funcion a usar
 include "conexiondb.php";
 
-
+$id = $_GET['id'];
 //Se guarda en una variable la conexion para poder usarla
-$mysqli = conexiondb();
+$mysqli = conexion_db();
 
 // Se ejecuta la consulta y se asigna el resultado a una variable, en este caso llamada resultado
-//$resultado = $mysqli->query("");
+$resultado = $mysqli->query("SELECT * FROM clientes WHERE id ='$id'");
+
+$registro = $resultado->fetch_assoc();
 
 ?>
 
@@ -165,41 +167,53 @@ $mysqli = conexiondb();
             <br>
             <div class="mb-3" style="width:50%">
               <label for="fecha_alta" class="form-label">Fecha de alta</label>
-              <input type="text" class="form-control" id="fecha_alta" value="<?php echo $fecha = date('d/m/Y'); ?>" disabled>
+              <input type="text" class="form-control" id="fecha_alta" value="<?php echo $registro['fecha_alta'] ?>" disabled>
             </div>
             <div class="mb-3" style="width:50%">
               <label for="cliente" class="form-label">Cliente</label>
-              <input type="text" class="form-control" id="cliente" value="Edenor">
+              <input type="text" class="form-control" id="cliente" value="<?php echo $registro['cliente'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="referente" class="form-label">Referente</label>
-              <input type="text" class="form-control" id="referente" value="Gaston Barbaccia">
+              <input type="text" class="form-control" id="referente" value="<?php echo $registro['referente'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="departamento" class="form-label">Departamento</label>
-              <input type="text" class="form-control" id="departamento" value="Ciberseguridad">
+              <input type="text" class="form-control" id="departamento" value="<?php echo $registro['departamento'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="direccion" class="form-label">Dirección</label>
-              <input type="text" class="form-control" id="direccion" value="Tronador 555">
+              <input type="text" class="form-control" id="direccion" value="<?php echo $registro['direccion'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="codigo_postal" class="form-label">Código postal</label>
-              <input type="text" class="form-control" id="codigo_postal" value="1029">
+              <input type="text" class="form-control" id="codigo_postal" value="<?php echo $registro['codigo_postal'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="localidad" class="form-label">Localidad</label>
-              <input type="text" class="form-control" id="localidad" value="Chacarita">
+              <input type="text" class="form-control" id="localidad" value="<?php echo $registro['localidad'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="pais_provincia" class="form-label">Pais / Provincia</label>
-              <input type="text" class="form-control" id="pais_provincia" value="Arg./Buenos Aires">
+              <input type="text" class="form-control" id="pais_provincia" value="<?php echo $registro['pais_provincia'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="suscripcion" class="form-label">Suscripción</label>
               <select class="form-control" id="suscripcion">
-                <option value="activa" default>Activa</option>
-                <option value="inactiva">Inactiva</option>
+                <?php
+                if($registro['suscripcion'] == 'activa'){
+                ?>
+                  <option value="activa" default>Activa</option>
+                  <option value="inactiva">Inactiva</option>
+                <?php
+                }else if($registro['suscripcion'] == 'inactiva'){
+                ?>
+                  <option value="inactiva">Inactiva</option>
+                  <option value="activa" default>Activa</option>
+                <?php
+                }
+                ?>           
+                
               </select>
             </div>
             <br>
@@ -208,15 +222,15 @@ $mysqli = conexiondb();
             <br>
             <div class="mb-3" style="width:50%">
               <label for="cuenta_aws" class="form-label">Cuenta de AWS</label>
-              <input type="text" class="form-control" id="cuenta_aws" value="0129312384">
+              <input type="text" class="form-control" id="cuenta_aws" value="<?php echo $registro['cuenta_AWS'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="instancia_aws" class="form-label">Instancia AWS</label>
-              <input type="text" class="form-control" id="instancia_aws" value="i-a917361829">
+              <input type="text" class="form-control" id="instancia_aws" value="<?php echo $registro['instancia_AWS'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="base_datos_aws" class="form-label">Base de datos AWS</label>
-              <input type="text" class="form-control" id="base_datos_aws" value="rds-9123had-edenor.com (mysql)">
+              <input type="text" class="form-control" id="base_datos_aws" value="<?php echo $registro['base_datos_AWS'] ?>">
             </div>
             <br>
             <hr>
@@ -224,19 +238,19 @@ $mysqli = conexiondb();
             <br>
             <div class="mb-3" style="width:50%">
               <label for="sonarqube" class="form-label">Servidor de Sonarqube</label>
-              <input type="text" class="form-control" id="sonarqube" placeholder="Ej. https://server.sonarqube.com:9000">
+              <input type="text" class="form-control" id="sonarqube" value="<?php echo $registro['sonarqube'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="defect_dojo" class="form-label">Servidor de Defect Dojo</label>
-              <input type="text" class="form-control" id="defect_dojo" placeholder="Ej. https://server.defectdojo.com:8080">
+              <input type="text" class="form-control" id="defect_dojo" value="<?php echo $registro['defect_dojo'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="acunetix" class="form-label">Servidor de Acunetix</label>
-              <input type="text" class="form-control" id="acunetix" placeholder="Ej. https://server.acunetix.com:3443">
+              <input type="text" class="form-control" id="acunetix" value="<?php echo $registro['acunetix'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="repositorio_github" class="form-label">Repositorio Github</label>
-              <input type="text" class="form-control" id="repositorio_github" placeholder="Ej. https://github.com/">
+              <input type="text" class="form-control" id="repositorio_github" value="<?php echo $registro['github'] ?>">
             </div>
             <div style="margin-bottom:3%;float:right">
               <div style="display: inline-block;">

@@ -5,10 +5,10 @@ include "conexiondb.php";
 
 
 //Se guarda en una variable la conexion para poder usarla
-$mysqli = conexiondb();
+$mysqli = conexion_db();
 
 // Se ejecuta la consulta y se asigna el resultado a una variable, en este caso llamada resultado
-//$resultado = $mysqli->query("");
+$resultado = $mysqli->query("SELECT * FROM clientes");
 
 ?>
 
@@ -122,7 +122,7 @@ $mysqli = conexiondb();
                 </p>
               </a>
             </li>
-          <!--  <li class="nav-item">
+            <!--  <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-cubes"></i>
                 <p>
@@ -184,42 +184,70 @@ $mysqli = conexiondb();
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td style="font-size: 14px;padding-top:2%;">04/08/2022</td>
-                <td style="font-size: 14px;padding-top:2%;">Edenor</td>
-                <td style="font-size: 14px;padding-top:2%;">Gaston Barbaccia</td>
-                <td style="font-size: 14px;padding-top:2%;">Ciberseguridad</td>
-                <td style="font-size: 14px;padding-top:2%;">Tronador 555</td>
-                <td style="font-size: 14px;padding-top:2%;">1029</td>
-                <td style="font-size: 14px;padding-top:2%;">Chacarita</td>
-                <td style="font-size: 14px;padding-top:2%;">Arg/Buenos Aires</td>
-                <td style="font-size: 14px;padding-top:2%;color:green;">Activa</td>
-                <td style="font-size: 14px;padding-top:2%;">
-                  <div style="padding-bottom:5%">
-                    <a href="#">Sonarqube</a>
-                  </div>
-                  <div style="padding-bottom:5%">
-                    <a href="#">Defect dojo</a>
-                  </div>
-                  <div style="padding-bottom:5%">
-                    <a href="#">Acunetix</a>
-                  </div>
-                  <div style="padding-bottom:5%">
-                    <a href="#">Github</a>
-                  </div>
-                </td>
-                <td style="font-size: 14px;padding-top:2%;text-align:center">
-                  <div>
-                    <a href="modificar_cliente.php" style="padding-right:6%"><i class="fa-solid fas fa-edit"></i> Editar</a>
-                  </div>
-                  <br>
-                  <div>
-                    <a href="#"><i class="fa-solid fas fa-trash"></i> Eliminar</a>
-                  </div>
-                  <br>
-                </td>
-              </tr>
+              <?php
+              while ($filas = $resultado->fetch_assoc()) {
+              ?>
+                <tr>
+                  <td style="font-size: 14px;padding-top:2%;"><?php echo $filas['fecha_alta'] ?></td>
+                  <td style="font-size: 14px;padding-top:2%;"><?php echo $filas['cliente'] ?></td>
+                  <td style="font-size: 14px;padding-top:2%;"><?php echo $filas['referente'] ?></td>
+                  <td style="font-size: 14px;padding-top:2%;"><?php echo $filas['departamento'] ?></td>
+                  <td style="font-size: 14px;padding-top:2%;"><?php echo $filas['direccion'] ?></td>
+                  <td style="font-size: 14px;padding-top:2%;"><?php echo $filas['codigo_postal'] ?></td>
+                  <td style="font-size: 14px;padding-top:2%;"><?php echo $filas['localidad'] ?></td>
+                  <td style="font-size: 14px;padding-top:2%;"><?php echo $filas['pais_provincia'] ?></td>
+                  <td style="font-size: 14px;padding-top:2%;color:green;"><b><?php echo $filas['suscripcion'] ?></b></td>
+                  <td style="font-size: 14px;padding-top:2%;">
+                    <?php
+                    if (!empty($filas['sonarqube'])) {
+                    ?>
+                      <div style="padding-bottom:5%">
+                        <a href="<?php echo $filas['sonarqube'] ?>" target="_blank">Sonarqube</a>
+                      </div>
 
+                    <?php
+                    }
+                    if (!empty($filas['defect_dojo'])) {
+                    ?>
+
+                      <div style="padding-bottom:5%">
+                        <a href="<?php echo $filas['defect_dojo'] ?>" target="_blank">Defect dojo</a>
+                      </div>
+
+                    <?php
+                    }
+                    if (!empty($filas['acunetix'])) {
+                    ?>
+                      <div style="padding-bottom:5%">
+                        <a href="<?php echo $filas['acunetix'] ?>" target="_blank">Acunetix</a>
+                      </div>
+                    <?php
+                    }
+                    if (!empty($filas['github'])) {
+                    ?>
+                      <div style="padding-bottom:5%">
+                        <a href="<?php echo $filas['github'] ?>" target="_blank">Github</a>
+                      </div>
+                    <?php
+                    }
+                    ?>
+                  </td>
+                  <td style="font-size: 14px;padding-top:2%;text-align:center">
+                    <div>
+                      <a href="modificar_cliente.php?id=<?php echo $filas['id'] ?>" style="padding-right:6%"><i class="fa-solid fas fa-edit"></i> Editar</a>
+                    </div>
+                    <br>
+                    <div>
+                      <a href="eliminar_cliente.php?id=<?php echo $filas['id'] ?>"><i class="fa-solid fas fa-trash"></i> Eliminar</a>
+                    </div>
+                    <br>
+                  </td>
+                </tr>
+              <?php
+
+              }
+
+              ?>
             </tbody>
           </table>
         </div>

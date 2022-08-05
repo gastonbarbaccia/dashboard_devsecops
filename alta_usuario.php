@@ -5,7 +5,7 @@ include "conexiondb.php";
 
 
 //Se guarda en una variable la conexion para poder usarla
-$mysqli = conexiondb();
+$mysqli = conexion_db();
 
 // Se ejecuta la consulta y se asigna el resultado a una variable, en este caso llamada resultado
 //$resultado = $mysqli->query("");
