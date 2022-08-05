@@ -1,17 +1,3 @@
-<?php
-
-//Primero se debe incluir el archivo donde esta la funcion a usar
-include "conexiondb.php";
-
-
-//Se guarda en una variable la conexion para poder usarla
-$mysqli = conexion_db();
-
-// Se ejecuta la consulta y se asigna el resultado a una variable, en este caso llamada resultado
-//$resultado = $mysqli->query("");
-
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -160,36 +146,36 @@ $mysqli = conexion_db();
           </div>
         </div>
 
-        <form>
+        <form action="registrar_usuario.php" method="POST">
           <div class="card-body table-responsive p-0" style="width:50%;margin-left:1%">
             <br>
             <div class="mb-3" style="width:50%">
               <label for="fecha_alta" class="form-label">Fecha de alta</label>
-              <input type="text" class="form-control" id="fecha_alta" value="<?php echo $fecha = date('d/m/Y'); ?>" disabled>
+              <input type="text" class="form-control" id="fecha_alta" name="fecha_alta" value="<?php echo $fecha = date('d/m/Y'); ?>" readonly>
             </div>
             <div class="mb-3" style="width:50%">
               <label for="nombre" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="nombre">
+              <input type="text" class="form-control" id="nombre" name="nombre">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="apellido" class="form-label">Apellido</label>
-              <input type="text" class="form-control" id="apellido">
+              <input type="text" class="form-control" id="apellido" name="apellido">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="email" class="form-label">Correo electrónico</label>
-              <input type="email" class="form-control" id="email">
+              <input type="email" class="form-control" id="email" name="email">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="usuario" class="form-label">Usuario</label>
-              <input type="text" class="form-control" id="usuario">
+              <input type="text" class="form-control" id="usuario" name="usuario">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="contrasena" class="form-label">Contraseña</label>
-              <input type="text" class="form-control" id="contrasena">
+              <input type="text" class="form-control" id="contrasena" name="contrasena">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="rol" class="form-label">Rol</label>
-              <select class="form-control" id="rol">
+              <select class="form-control" id="rol" name="rol">
                 <option value="" default></option>
                 <option value="DevSecOps">DevSecOps</option>
                 <option value="DevOps">DevOps</option>
@@ -200,7 +186,7 @@ $mysqli = conexion_db();
             </div>
             <div style="margin-bottom:3%;float:right">
               <div style="display: inline-block;">
-                <a type="submit" class="btn btn-primary" style="background-color:blue;border-color:blue;display: inline-block;margin-top: 30px;width:150px" href="#">Guardar</a>
+                <button type="submit" class="btn btn-primary" style="background-color:blue;border-color:blue;display: inline-block;margin-top: 30px;width:150px">Guardar</button>
               </div>
               <div style="display:inline-block;">
                 <a class="btn btn-primary" style="background-color:grey;border-color:grey;display: inline-block;margin-top: 30px;width:150px" href="gestion_usuarios.php">Cancelar</a>

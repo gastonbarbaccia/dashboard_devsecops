@@ -171,7 +171,6 @@ $mysqli = conexion_db();
             <thead>
               <tr style="background-color:#ababab">
                 <th>Empresa</th>
-                <th>Fecha de actualización</th>
                 <th>Informe quincenal</th>
                 <th>Informe mensual</th>
                 <th style="text-align: center;">Opciones</th>
@@ -180,9 +179,8 @@ $mysqli = conexion_db();
             <tbody>
               <tr>
                 <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Edenor</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">04/08/2022 12:40</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><a href="#"><i class="fa-solid fas fa-file-pdf"></i> Descargar informe quincenal 04082022</a></td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><a href="#"><i class="fa-solid fas fa-file-pdf"></i> Descargar informe mensual 04082022</a></td>
+                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><a href="#"><i class="fa-solid fas fa-file-pdf"></i> Descargar informe quincenal</a></td>
+                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><a href="#"><i class="fa-solid fas fa-file-pdf"></i> Descargar informe mensual</a></td>
                 <td style="font-size: 14px;padding-top:2%;text-align:center;padding-bottom:2%">
                 
                     <a href="#" style="padding-right:6%"><i class="fa-solid fas fa-edit"></i> Editar</a>

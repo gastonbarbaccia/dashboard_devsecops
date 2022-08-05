@@ -2,7 +2,7 @@
 
 include 'conexiondb.php';
 
-$fecha_alta = date('d/m/Y');
+$id = $_POST['id'];
 $cliente = $_POST['cliente'];
 $referente = $_POST['referente'];
 $departamento = $_POST['departamento']; 
@@ -21,9 +21,7 @@ $repositorio_github = $_POST['repositorio_github'];
 
 $conexion = conexion_db();
 
-$conexion->query("INSERT INTO `clientes`(`fecha_alta`, `cliente`, `referente`, `departamento`, `direccion`, `codigo_postal`, `localidad`, `pais_provincia`, `suscripcion`, `cuenta_AWS`, `instancia_AWS`, `base_datos_AWS`, `sonarqube`, `defect_dojo`, `acunetix`, `github`) VALUES
-('$fecha_alta','$cliente','$referente','$departamento','$direccion ','$codigo_postal','$localidad','$pais_provincia','$suscripcion','$cuenta_aws','$instancia_aws','$base_datos_aws','$sonarqube','$defect_dojo','$acunetix','$repositorio_github')");
-
+$conexion->query("UPDATE `clientes` SET `cliente`='$cliente',`referente`='$referente',`departamento`='$departamento',`direccion`='$direccion',`codigo_postal`='$codigo_postal',`localidad`='$localidad',`pais_provincia`='$pais_provincia',`suscripcion`='$suscripcion',`cuenta_AWS`='$cuenta_aws',`instancia_AWS`='$instancia_aws',`base_datos_AWS`='$base_datos_aws',`sonarqube`='$sonarqube',`defect_dojo`='$defect_dojo',`acunetix`='$acunetix',`github`='$repositorio_github' WHERE id = '$id'");
 
 header('Location:clientes.php');
 

@@ -68,6 +68,16 @@ $resultado = $mysqli->query("SELECT * FROM clientes");
   .text-nowrap {
     white-space: normal !important;
   }
+
+  table{
+    table-layout: fixed;
+    width: 250px;
+}
+
+th, td {
+    width: 150px;
+    word-wrap: break-word;
+}
 </style>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -179,6 +189,9 @@ $resultado = $mysqli->query("SELECT * FROM clientes");
                 <th>Localidad</th>
                 <th>Pais/Provincia</th>
                 <th>Suscripción</th>
+                <th>Cuenta AWS</th>
+                <th>Instancia AWS</th>
+                <th>Base de datos AWS</th>
                 <th>Aplicaciones</th>
                 <th style="text-align: center;">Opciones</th>
               </tr>
@@ -188,16 +201,31 @@ $resultado = $mysqli->query("SELECT * FROM clientes");
               while ($filas = $resultado->fetch_assoc()) {
               ?>
                 <tr>
-                  <td style="font-size: 14px;padding-top:2%;"><?php echo $filas['fecha_alta'] ?></td>
-                  <td style="font-size: 14px;padding-top:2%;"><?php echo $filas['cliente'] ?></td>
-                  <td style="font-size: 14px;padding-top:2%;"><?php echo $filas['referente'] ?></td>
-                  <td style="font-size: 14px;padding-top:2%;"><?php echo $filas['departamento'] ?></td>
-                  <td style="font-size: 14px;padding-top:2%;"><?php echo $filas['direccion'] ?></td>
-                  <td style="font-size: 14px;padding-top:2%;"><?php echo $filas['codigo_postal'] ?></td>
-                  <td style="font-size: 14px;padding-top:2%;"><?php echo $filas['localidad'] ?></td>
-                  <td style="font-size: 14px;padding-top:2%;"><?php echo $filas['pais_provincia'] ?></td>
-                  <td style="font-size: 14px;padding-top:2%;color:green;"><b><?php echo $filas['suscripcion'] ?></b></td>
-                  <td style="font-size: 14px;padding-top:2%;">
+                  <td style="font-size: 14px;padding-top:0.5%;"><?php echo $filas['fecha_alta'] ?></td>
+                  <td style="font-size: 14px;padding-top:0.5%;"><?php echo $filas['cliente'] ?></td>
+                  <td style="font-size: 14px;padding-top:0.5%;"><?php echo $filas['referente'] ?></td>
+                  <td style="font-size: 14px;padding-top:0.5%;"><?php echo $filas['departamento'] ?></td>
+                  <td style="font-size: 14px;padding-top:0.5%;"><?php echo $filas['direccion'] ?></td>
+                  <td style="font-size: 14px;padding-top:0.5%;"><?php echo $filas['codigo_postal'] ?></td>
+                  <td style="font-size: 14px;padding-top:0.5%;"><?php echo $filas['localidad'] ?></td>
+                  <td style="font-size: 14px;padding-top:0.5%;"><?php echo $filas['pais_provincia'] ?></td>           
+                  <?php 
+                    if($filas['suscripcion'] == "activa"){
+                      ?>
+                         <td style="font-size: 14px;padding-top:0.5%;color:green;"><b><?php echo $filas['suscripcion'] ?></b></td>
+                      <?php
+                    }else{
+                      ?>
+
+                        <td style="font-size: 14px;padding-top:0.5%;color:red;"><b><?php echo $filas['suscripcion'] ?></b></td>
+
+                  <?php
+                    }
+                  ?>
+                        <td style="font-size: 14px;padding-top:0.5%;"><?php echo $filas['cuenta_AWS'] ?></td>
+                  <td style="font-size: 14px;padding-top:0.5%;"><?php echo $filas['instancia_AWS'] ?></td>
+                  <td style="font-size: 14px;padding-top:0.5%;"><?php echo $filas['base_datos_AWS'] ?></td>
+                  <td style="font-size: 14px;padding-top:0.5%;">
                     <?php
                     if (!empty($filas['sonarqube'])) {
                     ?>
@@ -232,7 +260,7 @@ $resultado = $mysqli->query("SELECT * FROM clientes");
                     }
                     ?>
                   </td>
-                  <td style="font-size: 14px;padding-top:2%;text-align:center">
+                  <td style="font-size: 14px;padding-top:0.5%;text-align:center">
                     <div>
                       <a href="modificar_cliente.php?id=<?php echo $filas['id'] ?>" style="padding-right:6%"><i class="fa-solid fas fa-edit"></i> Editar</a>
                     </div>

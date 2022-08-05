@@ -8,7 +8,7 @@ include "conexiondb.php";
 $mysqli = conexion_db();
 
 // Se ejecuta la consulta y se asigna el resultado a una variable, en este caso llamada resultado
-//$resultado = $mysqli->query("");
+$resultado = $mysqli->query("SELECT * FROM usuarios");
 
 ?>
 
@@ -174,81 +174,33 @@ $mysqli = conexion_db();
                 <th>Apellido</th>
                 <th>Email</th>
                 <th>Usuario</th>
-                <th>Contraseña</th>
                 <th>Fecha de alta</th>
                 <th>Rol</th>
                 <th style="text-align: center;">Opciones</th>
               </tr>
             </thead>
             <tbody>
+              <?php
+               while($reg = $resultado->fetch_assoc()){
+              ?>
               <tr>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Gaston</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Barbaccia</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">gastonbarbaccia@hotmail.com</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">gastonbarbaccia</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><a href="#">Reestablecer contraseña</a></td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">04/08/2022</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">DevSecOps</td>
+                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><?php echo $reg['nombre']?></td>
+                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><?php echo $reg['apellido']?></td>
+                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><?php echo $reg['email']?></td>
+                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><?php echo $reg['usuario']?></td>
+                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><?php echo $reg['fecha_alta']?></td>
+                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><?php echo $reg['rol']?></td>
                 <td style="font-size: 14px;padding-top:2%;text-align:center;padding-bottom:2%">
                 
-                    <a href="modificar_usuario.php" style="padding-right:6%"><i class="fa-solid fas fa-edit"></i> Editar</a>
+                    <a href="modificar_usuario.php?id=<?php echo $reg['id']?>" style="padding-right:6%"><i class="fa-solid fas fa-edit"></i> Editar</a>
                     
-                    <a href="#"><i class="fa-solid fas fa-trash"></i> Eliminar</a>
+                    <a href="eliminar_usuario.php?id=<?php echo $reg['id']?>"><i class="fa-solid fas fa-trash"></i> Eliminar</a>
                 
                 </td>
               </tr>
-
-              <tr>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Lucas</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Veron</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">lucasveron@hotmail.com</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">lucasveron</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><a href="#">Reestablecer contraseña</a></td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">04/08/2022</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Desarrollo</td>
-                <td style="font-size: 14px;padding-top:2%;text-align:center;padding-bottom:2%">
-                
-                    <a href="modificar_usuario.php" style="padding-right:6%"><i class="fa-solid fas fa-edit"></i> Editar</a>
-                    
-                    <a href="#"><i class="fa-solid fas fa-trash"></i> Eliminar</a>
-                
-                </td>
-              </tr>
-
-              <tr>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Leandro</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Guiamas</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">leaguaimas@hotmail.com</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">leandroguaimas</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><a href="#">Reestablecer contraseña</a></td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">04/08/2022</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">DevOps</td>
-                <td style="font-size: 14px;padding-top:2%;text-align:center;padding-bottom:2%">
-                
-                    <a href="modificar_usuario.php" style="padding-right:6%"><i class="fa-solid fas fa-edit"></i> Editar</a>
-                    
-                    <a href="#"><i class="fa-solid fas fa-trash"></i> Eliminar</a>
-                
-                </td>
-              </tr>
-
-              <tr>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Lucas</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Greco</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">lucasgreco@hotmail.com</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">lucasgreco</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><a href="#">Reestablecer contraseña</a></td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">04/08/2022</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Informes</td>
-                <td style="font-size: 14px;padding-top:2%;text-align:center;padding-bottom:2%">
-                
-                    <a href="modificar_usuario.php" style="padding-right:6%"><i class="fa-solid fas fa-edit"></i> Editar</a>
-                    
-                    <a href="#"><i class="fa-solid fas fa-trash"></i> Eliminar</a>
-                
-                </td>
-              </tr>
-              
+              <?php
+              }
+              ?>
               
             </tbody>
           </table>

@@ -162,44 +162,45 @@ $registro = $resultado->fetch_assoc();
           </div>
         </div>
 
-        <form>
+        <form action="actualizar_cliente.php" method="POST">
           <div class="card-body table-responsive p-0" style="width:50%;margin-left:1%">
             <br>
+            <input type="text" class="form-control" id="id" name="id" value="<?php echo $id  ?>" hidden>
             <div class="mb-3" style="width:50%">
               <label for="fecha_alta" class="form-label">Fecha de alta</label>
-              <input type="text" class="form-control" id="fecha_alta" value="<?php echo $registro['fecha_alta'] ?>" disabled>
+              <input type="text" class="form-control" id="fecha_alta" name="fecha_alta"  value="<?php echo $registro['fecha_alta'] ?>" disabled>
             </div>
             <div class="mb-3" style="width:50%">
               <label for="cliente" class="form-label">Cliente</label>
-              <input type="text" class="form-control" id="cliente" value="<?php echo $registro['cliente'] ?>">
+              <input type="text" class="form-control" id="cliente" name="cliente" value="<?php echo $registro['cliente'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="referente" class="form-label">Referente</label>
-              <input type="text" class="form-control" id="referente" value="<?php echo $registro['referente'] ?>">
+              <input type="text" class="form-control" id="referente" name="referente" value="<?php echo $registro['referente'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="departamento" class="form-label">Departamento</label>
-              <input type="text" class="form-control" id="departamento" value="<?php echo $registro['departamento'] ?>">
+              <input type="text" class="form-control" id="departamento"  name="departamento" value="<?php echo $registro['departamento'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="direccion" class="form-label">Dirección</label>
-              <input type="text" class="form-control" id="direccion" value="<?php echo $registro['direccion'] ?>">
+              <input type="text" class="form-control" id="direccion" name="direccion" value="<?php echo $registro['direccion'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="codigo_postal" class="form-label">Código postal</label>
-              <input type="text" class="form-control" id="codigo_postal" value="<?php echo $registro['codigo_postal'] ?>">
+              <input type="text" class="form-control" id="codigo_postal" name="codigo_postal" value="<?php echo $registro['codigo_postal'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="localidad" class="form-label">Localidad</label>
-              <input type="text" class="form-control" id="localidad" value="<?php echo $registro['localidad'] ?>">
+              <input type="text" class="form-control" id="localidad" name="localidad" value="<?php echo $registro['localidad'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="pais_provincia" class="form-label">Pais / Provincia</label>
-              <input type="text" class="form-control" id="pais_provincia" value="<?php echo $registro['pais_provincia'] ?>">
+              <input type="text" class="form-control" id="pais_provincia" name="pais_provincia" value="<?php echo $registro['pais_provincia'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="suscripcion" class="form-label">Suscripción</label>
-              <select class="form-control" id="suscripcion">
+              <select class="form-control" id="suscripcion" name="suscripcion">
                 <?php
                 if($registro['suscripcion'] == 'activa'){
                 ?>
@@ -222,15 +223,15 @@ $registro = $resultado->fetch_assoc();
             <br>
             <div class="mb-3" style="width:50%">
               <label for="cuenta_aws" class="form-label">Cuenta de AWS</label>
-              <input type="text" class="form-control" id="cuenta_aws" value="<?php echo $registro['cuenta_AWS'] ?>">
+              <input type="text" class="form-control" id="cuenta_aws" name="cuenta_aws" value="<?php echo $registro['cuenta_AWS'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="instancia_aws" class="form-label">Instancia AWS</label>
-              <input type="text" class="form-control" id="instancia_aws" value="<?php echo $registro['instancia_AWS'] ?>">
+              <input type="text" class="form-control" id="instancia_aws" name="instancia_aws" value="<?php echo $registro['instancia_AWS'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="base_datos_aws" class="form-label">Base de datos AWS</label>
-              <input type="text" class="form-control" id="base_datos_aws" value="<?php echo $registro['base_datos_AWS'] ?>">
+              <input type="text" class="form-control" id="base_datos_aws" name="base_datos_aws" value="<?php echo $registro['base_datos_AWS'] ?>">
             </div>
             <br>
             <hr>
@@ -238,23 +239,23 @@ $registro = $resultado->fetch_assoc();
             <br>
             <div class="mb-3" style="width:50%">
               <label for="sonarqube" class="form-label">Servidor de Sonarqube</label>
-              <input type="text" class="form-control" id="sonarqube" value="<?php echo $registro['sonarqube'] ?>">
+              <input type="text" class="form-control" id="sonarqube" name="sonarqube" value="<?php echo $registro['sonarqube'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="defect_dojo" class="form-label">Servidor de Defect Dojo</label>
-              <input type="text" class="form-control" id="defect_dojo" value="<?php echo $registro['defect_dojo'] ?>">
+              <input type="text" class="form-control" id="defect_dojo" name="defect_dojo" value="<?php echo $registro['defect_dojo'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="acunetix" class="form-label">Servidor de Acunetix</label>
-              <input type="text" class="form-control" id="acunetix" value="<?php echo $registro['acunetix'] ?>">
+              <input type="text" class="form-control" id="acunetix" name="acunetix" value="<?php echo $registro['acunetix'] ?>">
             </div>
             <div class="mb-3" style="width:50%">
               <label for="repositorio_github" class="form-label">Repositorio Github</label>
-              <input type="text" class="form-control" id="repositorio_github" value="<?php echo $registro['github'] ?>">
+              <input type="text" class="form-control" id="repositorio_github" name="repositorio_github" value="<?php echo $registro['github'] ?>">
             </div>
             <div style="margin-bottom:3%;float:right">
               <div style="display: inline-block;">
-                <a type="submit" class="btn btn-primary" style="background-color:blue;border-color:blue;display: inline-block;margin-top: 30px;width:150px" href="#">Guardar</a>
+                <button type="submit" class="btn btn-primary" style="background-color:blue;border-color:blue;display: inline-block;margin-top: 30px;width:150px">Guardar</button>
               </div>
               <div style="display:inline-block;">
                 <a class="btn btn-primary" style="background-color:grey;border-color:grey;display: inline-block;margin-top: 30px;width:150px" href="clientes.php">Cancelar</a>
