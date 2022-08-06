@@ -8,7 +8,7 @@ include "conexiondb.php";
 $mysqli = conexion_db();
 
 // Se ejecuta la consulta y se asigna el resultado a una variable, en este caso llamada resultado
-//$resultado = $mysqli->query("");
+$resultado = $mysqli->query("SELECT * FROM reportes");
 
 ?>
 
@@ -158,7 +158,7 @@ $mysqli = conexion_db();
           <div class="card-tools">
             <div class="input-group input-group-sm">
               <div>
-                <a class="btn btn-primary" style="width: 100%;background-color:blue;border-color:blue;" href="#">+ Nuevo reporte</a>
+                <a class="btn btn-primary" style="width: 100%;background-color:blue;border-color:blue;" href="alta_reportes_seguridad.php">+ Nuevo reporte</a>
               </div>
             </div>
           </div>
@@ -171,26 +171,27 @@ $mysqli = conexion_db();
             <thead>
               <tr style="background-color:#ababab">
                 <th>Empresa</th>
-                <th>Informe quincenal</th>
-                <th>Informe mensual</th>
+                <th>Listado de informes</th>
                 <th style="text-align: center;">Opciones</th>
               </tr>
             </thead>
             <tbody>
+            <?php
+            while($reg = $resultado->fetch_assoc()){
+            ?>
               <tr>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%">Edenor</td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><a href="#"><i class="fa-solid fas fa-file-pdf"></i> Descargar informe quincenal</a></td>
-                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><a href="#"><i class="fa-solid fas fa-file-pdf"></i> Descargar informe mensual</a></td>
+                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><?php echo $reg['cliente']?></td>
+                <td style="font-size: 14px;padding-top:2%;padding-bottom:2%"><a href="reportes_seguridad_informes.php?cliente_id=<?php echo $reg['cliente_id']?>&cliente=<?php echo $reg['cliente']?>"><i class="fa-solid fas fa-eye"></i> Ver informes</a></td>
                 <td style="font-size: 14px;padding-top:2%;text-align:center;padding-bottom:2%">
+              
+                    <a href="eliminar_reporte.php?id=<?php echo $reg['id']?>" style="padding-right:6%"><i class="fa-solid fas fa-trash"></i> Eliminar</a>
                 
-                    <a href="#" style="padding-right:6%"><i class="fa-solid fas fa-edit"></i> Editar</a>
-                    
-                    <a href="#" style="padding-right:6%"><i class="fa-solid fas fa-trash"></i> Eliminar</a>
-                
-                    <a href="#"><i class="fa-solid fas fa-upload"></i> Cargar informes</a>
                 </td>
               </tr>
-
+              <?php
+              }
+              ?>
+              
             </tbody>
           </table>
         </div>

@@ -4,15 +4,13 @@
 include "conexiondb.php";
 
 $id = $_GET['id'];
-
 //Se guarda en una variable la conexion para poder usarla
 $mysqli = conexion_db();
 
 // Se ejecuta la consulta y se asigna el resultado a una variable, en este caso llamada resultado
-$resultado = $mysqli->query("SELECT * FROM usuarios WHERE id = '$id'");
+$resultado = $mysqli->query("SELECT * FROM reportes WHERE cliente_id = '$id'");
 
-$reg = $resultado->fetch_assoc();
-
+$reg = $resultado-> fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +19,7 @@ $reg = $resultado->fetch_assoc();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>DevSecOps | Modificar usuario </title>
+  <title>DevSecOps | Subir Informe </title>
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -157,57 +155,30 @@ $reg = $resultado->fetch_assoc();
 
 
         <div class="card-header">
-          <h3 class="card-title"><b>Modificar usuario</b></h3>
+          <h3 class="card-title"><b>Subir informe</b></h3>
           <div class="card-tools">
 
           </div>
         </div>
 
-        <form action="actualizar_usuario.php" method="POST">
+        <form method="POST" action="guardar_informe.php" enctype="multipart/form-data">
           <div class="card-body table-responsive p-0" style="width:50%;margin-left:1%">
             <br>
-            <input type="text" class="form-control" id="id" name="id" value="<?php echo $id ?>" hidden>
+            <input type="text" class="form-control-ggb form-control" id="cliente_id" name="cliente_id" value="<?php echo $reg['cliente_id'];?>" hidden>
             <div class="mb-3" style="width:50%">
-              <label for="fecha_alta" class="form-label">Fecha de alta</label>
-              <input type="text" class="form-control" id="fecha_alta" name="fecha_alta" value="<?php echo $reg['fecha_alta'] ?>" disabled>
+              <label for="cliente" class="form-label">Empresa</label>
+              <input type="text" class="form-control-ggb form-control" id="cliente" name="cliente" value="<?php echo $reg['cliente'];?>" readonly>
             </div>
             <div class="mb-3" style="width:50%">
-              <label for="nombre" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $reg['nombre'] ?>">
-            </div>
-            <div class="mb-3" style="width:50%">
-              <label for="apellido" class="form-label">Apellido</label>
-              <input type="text" class="form-control" id="apellido" name="apellido" value="<?php echo $reg['apellido'] ?>">
-            </div>
-            <div class="mb-3" style="width:50%">
-              <label for="email" class="form-label">Correo electrónico</label>
-              <input type="email" class="form-control" id="email" name="email" value="<?php echo $reg['email'] ?>">
-            </div>
-            <div class="mb-3" style="width:50%">
-              <label for="usuario" class="form-label">Usuario</label>
-              <input type="text" class="form-control" id="usuario" name="usuario" value="<?php echo $reg['usuario'] ?>">
-            </div>
-            <div class="mb-3" style="width:50%">
-              <label for="contrasena" class="form-label">Reestablecer contraseña</label>
-              <input type="password" class="form-control" id="contrasena" name="contrasena">
-            </div>
-            <div class="mb-3" style="width:50%">
-              <label for="rol" class="form-label">Rol</label>
-              <select class="form-control" id="rol" name="rol">
-                <option value="<?php echo $reg['rol'] ?>" default><?php echo $reg['rol'] ?></option>
-                <option value="DevSecOps">DevSecOps</option>
-                <option value="DevOps">DevOps</option>
-                <option value="Desarrollador">Desarrollador</option>
-                <option value="Informes">Informes</option>
-                <option value="Cloud AWS">Cloud AWS</option>
-              </select>
+              <label for="archivo" class="form-label">Informe a subir</label>
+              <input type="file" class="form-control-ggb form-control" id="archivo" name="archivo" accept="application/pdf" required>
             </div>
             <div style="margin-bottom:3%;float:right">
               <div style="display: inline-block;">
-                <button type="submit" class="btn btn-primary" style="background-color:blue;border-color:blue;display: inline-block;margin-top: 30px;width:150px">Guardar</button>
+                <button type="submit" class="btn btn-primary" style="background-color:blue;border-color:blue;display: inline-block;margin-top: 30px;width:150px" href="#">Guardar</button>
               </div>
               <div style="display:inline-block;">
-                <a class="btn btn-primary" style="background-color:grey;border-color:grey;display: inline-block;margin-top: 30px;width:150px" href="gestion_usuarios.php">Cancelar</a>
+                <a class="btn btn-primary" style="background-color:grey;border-color:grey;display: inline-block;margin-top: 30px;width:150px" href="reportes_seguridad.php">Cancelar</a>
               </div>
             </div>
           </div>
