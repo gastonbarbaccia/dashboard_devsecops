@@ -1,3 +1,22 @@
+<?php
+
+session_start();
+
+
+
+if(!isset($_SESSION['id'])){
+
+
+
+   header('Location:/');
+
+
+
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -118,7 +137,7 @@
             </li>-->
             <hr width=500 style="background-color:grey">
             <li class="nav-item">
-              <a href="index.php" class="nav-link">
+              <a href="cerrar_sesion.php" class="nav-link">
                 <i class="nav-icon fas fa-sign-out-alt"></i>
                 <p>
                   Cerrar sesión

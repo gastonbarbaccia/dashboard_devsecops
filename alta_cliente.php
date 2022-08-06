@@ -3,6 +3,19 @@
 //Primero se debe incluir el archivo donde esta la funcion a usar
 include "conexiondb.php";
 
+session_start();
+
+
+
+if(!isset($_SESSION['id'])){
+
+
+
+   header('Location:/');
+
+
+
+}
 
 //Se guarda en una variable la conexion para poder usarla
 $mysqli = conexion_db();
@@ -132,7 +145,7 @@ $mysqli = conexion_db();
             </li>-->
             <hr width=500 style="background-color:grey">
             <li class="nav-item">
-              <a href="index.php" class="nav-link">
+              <a href="cerrar_sesion.php" class="nav-link">
                 <i class="nav-icon fas fa-sign-out-alt"></i>
                 <p>
                   Cerrar sesión

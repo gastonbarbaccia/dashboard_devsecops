@@ -29,7 +29,7 @@
         <b>Devcode</b>
         <p style="font-size:30px ;">Portal DevSecOps</p>
       </div>
-      <form action="dashboard.php" method="post">
+      <form action="validacion_login.php" method="post">
         <div class="input-group mb-3">
           <input name="username" type="text" class="form-control" placeholder="Usuario">
           <div class="input-group-append">
